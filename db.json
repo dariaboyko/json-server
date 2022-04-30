@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Karen Eschweil",
+      "email": "sebastian@gmail.comdsf",
+      "birthdate": "2022-04-12",
+      "department": "B2"
+    },
+    {
+      "name": "Daria Boyko",
+      "email": "dariaboiko03@gmail.com",
+      "birthdate": "2022-04-06",
+      "department": "C3",
+      "id": 2
+    },
+    {
+      "name": "Sergei Pirat",
+      "email": "klhsasjkla@gmail.com",
+      "birthdate": "2022-04-11",
+      "department": "B2",
+      "id": 3
+    }
+  ]
+}

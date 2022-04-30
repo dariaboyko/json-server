@@ -1,0 +1,38 @@
+.wrapper{
+    width: 100%;
+    padding: 40px 0 0 0;
+    position: relative;
+    margin: 40px 0 0 0;
+}
+.addPersonButton{
+    height: 40px;
+    width: 150px;
+    background-color: rgb(36, 36, 246);
+    color: white;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    border: 0;
+    margin: -40px 10px 0 0;
+}
+.table{
+    margin: 10px 0 0 10px;
+    font-size: 20px;
+}
+.user{
+    padding: 10px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 50px;
+    position: relative;
+}
+.dots {
+    border: 0;
+    width: 30px;
+    height: auto;
+    background-image: radial-gradient(circle, black 2.2px, transparent 2.3px);
+    background-size: 100% 33.33%;
+    background-color: transparent;
+  }

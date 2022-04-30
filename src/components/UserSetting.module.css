@@ -1,0 +1,21 @@
+.userSettings{
+    z-index: 2;
+    position: absolute;
+    top:35px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 90px;
+    width: 200px;
+    background-color: #F1EEEE;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.button{
+    border: 0;
+    font-size: 17px;
+    background-color: #F1EEEE;
+}
+.button:hover{
+    border: solid 0.3px #c1bfbf;
+}
