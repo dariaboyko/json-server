@@ -1,7 +1,12 @@
 import MainWrapper from "../components/MainWrapper";
 import MainTitle from "../components/MainTitle";
-import Table from "../components/Table";
+import TableWrapper from "../components/Table";
 function MainPage(){
-    return <MainWrapper><MainTitle/><Table/></MainWrapper>;
+    return (
+      <MainWrapper>
+        <MainTitle />
+        <TableWrapper />
+      </MainWrapper>
+    );
 }
 export default MainPage;

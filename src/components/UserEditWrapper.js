@@ -1,5 +1,6 @@
 import classes from "./UserEdit.module.css";
 import { useState } from "react";
+import { useMutation, useQuery } from "react-query";
 function UserEditWrapper({ user }) {
       const [toggle, setToggle] = useState(true);
       const axios = require("axios");
@@ -15,19 +16,28 @@ function UserEditWrapper({ user }) {
       function changeSelectValue(event) {
         setSelectValue(event.target.value);
       }
+      const { isLoading, data } = useQuery("user", async () => {
+        return await axios.get(`http://localhost:8080/users/${user.id}`);
+      });
+      const editUser = useMutation((newUserInfo) => {
+          axios
+            .patch(`http://localhost:8080/users/${user.id}`, {
+              name: newUserInfo.name,
+              email: newUserInfo.email,
+              birthdate: newUserInfo.date,
+              department: selectValue,
+            })
+            .then((res) => res.data);
+      });
 
       const handleSubmit = (event) => {
         event.preventDefault();
-            axios
-              .patch(`http://localhost:8080/users/${user.id}`, {
-                name: inputs.name,
-                email: inputs.email,
-                birthdate: inputs.date,
-                department: selectValue,
-              })
-              .then((res) => res.data);
+        editUser.mutate(inputs);
           setToggle(false);
       };
+      if (isLoading) {
+        return <h2>Loading...</h2>;
+      }
   return (
     <>
       {toggle && (
@@ -45,7 +55,7 @@ function UserEditWrapper({ user }) {
                 className={classes.info}
                 placeholder="Enter name"
                 name="name"
-                value={inputs.name || user.name}
+                value={inputs.name || data.data.name}
                 onChange={handleChange}
               />
               <h2 className={classes.subTitle}>Email</h2>
@@ -54,7 +64,7 @@ function UserEditWrapper({ user }) {
                 type="email"
                 name="email"
                 placeholder="Enter email"
-                value={inputs.email || user.email}
+                value={inputs.email || data.data.email}
                 onChange={handleChange}
               />
               <h2 className={classes.subTitle}>Date</h2>
@@ -62,13 +72,13 @@ function UserEditWrapper({ user }) {
                 className={classes.info}
                 type="date"
                 name="date"
-                value={inputs.date || user.birthdate}
+                value={inputs.date || data.data.birthdate}
                 onChange={handleChange}
               />
               <h2 className={classes.subTitle}>Department</h2>
               <select
                 className={classes.info}
-                value={selectValue}
+                value={selectValue || data.data.department}
                 onChange={changeSelectValue}
               >
                 <option value="A1">A1</option>

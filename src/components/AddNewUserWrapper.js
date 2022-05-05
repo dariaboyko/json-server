@@ -1,5 +1,6 @@
 import classes from "./AddNewUser.module.css";
 import { useState } from "react";
+import { useMutation } from "react-query";
 function AddNewUserWrapper() {
     
     const [toggle, setToggle] = useState(true);
@@ -16,26 +17,25 @@ function AddNewUserWrapper() {
    function changeSelectValue(event) {
      setSelectValue(event.target.value);
    }
-
+   
+   const createUser = useMutation((newUserInfo)=>{
+        const { data: response } = axios.post(
+          axios.post("http://localhost:8080/users", {
+            name: newUserInfo.name,
+            email: newUserInfo.email,
+            birthdate: newUserInfo.date,
+            department: selectValue,
+          })
+        );
+        return response;
+   });
    const handleSubmit = (event) => {
      event.preventDefault();
      if (!inputs.name || !inputs.date || !inputs.email) {
        alert("Fill all the inputs");
      } else {
-       axios
-         .post("http://localhost:8080/users", {
-           name: inputs.name,
-           email: inputs.email,
-           birthdate: inputs.date,
-           department: selectValue,
-         })
-         .then((resp) => {
-           console.log(resp.data);
-         })
-         .catch((error) => {
-           console.log(error);
-         });
-       setToggle(false);
+       createUser.mutate(inputs);
+        setToggle(false);
      }
    };
 

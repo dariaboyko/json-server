@@ -1,0 +1,13 @@
+@import '//unpkg.com/carbon-components@latest/css/carbon-components.min.css';
+@import 'carbon-components/scss/components/button/button';
+.wrapper{
+    width: 100%;
+    padding: 40px 0 0 0;
+    position: relative;
+    margin: 40px 0 0 0;
+}
+.addUser{
+    font-size: 20px;
+    margin:  10px;
+}
+

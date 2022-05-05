@@ -1,10 +1,14 @@
 import MainPage from "./pages/MainPage";
 import { Routes, Route } from "react-router-dom";
+import {QueryClient, QueryClientProvider} from 'react-query';
+const queryClient = new QueryClient();
 function App() {
   return (
-    <Routes>
-      <Route path="" element={<MainPage/>}/>
-    </Routes>
+    <QueryClientProvider client={queryClient}>
+      <Routes>
+        <Route path="" element={<MainPage />} />
+      </Routes>
+       </QueryClientProvider>
   );
 }
 

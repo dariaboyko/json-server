@@ -1,8 +1,6 @@
 .userSettings{
     z-index: 2;
     position: absolute;
-    top:35px;
-    right: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -19,3 +17,12 @@
 .button:hover{
     border: solid 0.3px #c1bfbf;
 }
+.dots {
+    margin: 12px 0;
+    border: 0;
+    width: 30px;
+    height: 25px;
+    background-image: radial-gradient(circle, black 2.2px, transparent 2.3px);
+    background-size: 100% 33.33%;
+    background-color: transparent;
+  }
